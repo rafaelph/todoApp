@@ -1,29 +1,39 @@
 
-import { AxiosInstance } from "axios";
+import {AxiosInstance, AxiosResponse} from "axios";
 import ITask from "../interfaces/task";
 
 class Task {
 
-  private client;
+  private client: AxiosInstance;
 
   constructor(task: AxiosInstance) {
     this.client = task;
   }
 
-  addTask(payload: ITask) {
-    return this.client.post(`/addTask`, payload);
+  async addTask(payload: { name: string }): Promise<ITask> {
+    return this.mapResponse<ITask>(await this.client.post<{ name: string }>(`/todo`, payload));
   }
 
-  getAllTask() {
-    return this.client.get(`/tasks`);
+  async getAllTask() {
+    return this.mapResponse<ITask[]>(await this.client.get<void>(`/todo`));
   }
 
-  deleteTask(id: number) {
-    return this.client.delete(`/tasks/${id}`);
+  async deleteTask(id: number) {
+    return this.mapResponse<ITask>(await this.client.delete(`/todo/${id}`));
   }
 
-  completeTask(id: number) {
-    return this.client.put(`/tasks/${id}`);
+  async completeTask(id: number, completed: boolean) {
+    const obj = [{
+      op: "add",
+      path: "/completed",
+      value: completed
+    }];
+
+    return this.mapResponse<ITask>(await this.client.patch(`/todo/${id}`, obj));
+  }
+
+  mapResponse <T>(response: AxiosResponse): T {
+    return response.data;
   }
 }
 

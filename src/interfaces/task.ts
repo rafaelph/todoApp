@@ -1,5 +1,5 @@
 export default interface ITask {
   id: number;
-  task: string;
+  name: string;
   completed: boolean;
 }

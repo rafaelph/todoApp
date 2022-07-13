@@ -3,6 +3,7 @@ import ITask from "../../interfaces/task";
 
 //Components
 import TodoItem from "../TodoItem";
+import {FilterEnum} from "../../enums/filter.enum";
 
 interface Props {
     taskList: ITask[];
@@ -15,7 +16,7 @@ const TodoList: React.FC<Props> = ({ taskList, filter, onCompleteTask, deleteTas
     return (
         <div className="mt-3">
             {
-                filter === 'All' ?
+                filter === FilterEnum.ALL ?
                     taskList.map((task: ITask, index: number) => {
                         return <TodoItem
                             key={index}
@@ -24,8 +25,8 @@ const TodoList: React.FC<Props> = ({ taskList, filter, onCompleteTask, deleteTas
                             deleteTask={deleteTask}
                         />
                     }) :
-                    filter === 'Pending' ?
-                        taskList.filter((task: ITask) => task.completed === false).map((task: ITask, index: number) => {
+                    filter === FilterEnum.PENDING ?
+                        taskList.filter((task: ITask) => !task.completed).map((task: ITask, index: number) => {
                             return <TodoItem
                                 key={index}
                                 task={task}
@@ -33,8 +34,8 @@ const TodoList: React.FC<Props> = ({ taskList, filter, onCompleteTask, deleteTas
                                 deleteTask={deleteTask}
                             />
                         }) :
-                        filter === 'Completed' ?
-                            taskList.filter((task: ITask) => task.completed === true).map((task: ITask, index: number) => {
+                        filter === FilterEnum.COMPLETED ?
+                            taskList.filter((task: ITask) => task.completed).map((task: ITask, index: number) => {
                                 return <TodoItem
                                     key={index}
                                     task={task}

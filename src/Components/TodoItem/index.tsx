@@ -19,7 +19,7 @@ const TodoItem: React.FC<Props> = ({ task, onCompleteTask, deleteTask }) => {
             <div className="card-body">
                 <div style={getStyle()}>
                     <input type="checkbox" checked={task.completed} onChange={() => onCompleteTask(task.id)} />
-                    <span className="p-2">{task.task}</span>
+                    <span className="p-2">{task.name}</span>
                     <button className="add-btn" onClick={() => deleteTask(task.id)} >X</button>
                 </div>
             </div>
