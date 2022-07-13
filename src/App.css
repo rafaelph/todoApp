@@ -1,0 +1,11 @@
+.add-btn {
+    float: right;
+    color: #a52a2a;
+    background-color: transparent;
+    border: none;
+    font-size: 1.2rem;
+}
+
+.item:hover{
+    background-color: #f3eeee;
+}
