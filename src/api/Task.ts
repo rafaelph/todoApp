@@ -4,7 +4,7 @@ import ITask from "../interfaces/task";
 
 class Task {
 
-  private client;
+  private client: AxiosInstance;
 
   constructor(task: AxiosInstance) {
     this.client = task;

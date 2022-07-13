@@ -11,10 +11,11 @@ import ITask from './interfaces/task';
 
 //styles
 import './App.css'
+import {FilterEnum} from "./enums/filter.enum";
 
 function App() {
   const [taskList, setTaskList] = useState<ITask[]>(data);
-  const [filter, setFilter] = useState<string>('All');
+  const [filter, setFilter] = useState<string>(FilterEnum.ALL);
   const [newTask, setNewTask] = useState<string>('');
 
   const onCompleteTask = (taskId: number): void => {
@@ -58,9 +59,9 @@ function App() {
                   <input type="text" className='form-control' value={newTask} onChange={(e) => setNewTask(e.target.value)} />
                   <button className='btn btn-block btn-primary'>Add Task</button>
                   <select onChange={(e)=>setFilter(e.target.value)}>
-                    <option value={'All'}>All Task</option>
-                    <option value={'Pending'}>Pending</option>
-                    <option value={'Completed'}>Completed</option>
+                    <option value={FilterEnum.ALL}>All Task</option>
+                    <option value={FilterEnum.PENDING}>Pending</option>
+                    <option value={FilterEnum.COMPLETED}>Completed</option>
                   </select>
                 </div>
               </div>
