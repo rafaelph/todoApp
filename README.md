@@ -1,3 +1,16 @@
+# Project setup
+
+you have to install the dependencies first:
+
+```npm install ``` or using yarn ``` yarn ```
+
+then rename the file ``.env.example`` to ``.env`` and fill in the values.
+
+That is it. Now start the server:
+
+```npm run start```
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
