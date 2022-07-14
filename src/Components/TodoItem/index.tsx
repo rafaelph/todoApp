@@ -7,17 +7,10 @@ interface Props {
 }
 
 const TodoItem: React.FC<Props> = ({ task, onCompleteTask, deleteTask }) => {
-
-    const getStyle = () => {
-        return {
-            textDecoration: task.completed ? 'line-through' : 'none',
-        }
-    }
-
     return (
         <div className="card mt-1 item">
             <div className="card-body">
-                <div style={getStyle()}>
+                <div style={{textDecoration: task.completed ? 'line-through' : 'none'}}>
                     <input type="checkbox" checked={task.completed} onChange={() => onCompleteTask(task.id)} />
                     <span className="p-2">{task.task}</span>
                     <button className="add-btn" onClick={() => deleteTask(task.id)} >X</button>
