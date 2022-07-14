@@ -1,22 +1,22 @@
 [
     {
         "id": 1,
-        "task": "Comer",
+        "task": "Work",
         "completed": false
     },
     {
         "id": 2,
-        "task": "Cocinar",
+        "task": "Cook",
         "completed": false
     },
     {
         "id": 3,
-        "task": "Barrer",
+        "task": "To Travel",
         "completed": true
     },
     {
         "id": 4,
-        "task": "Reunirme",
+        "task": "Meeting",
         "completed": false
     }
 ]
